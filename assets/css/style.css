@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: grey;
+    font-family: sans-serif;
+}
+
+.header {
+    background: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-color: burlywood;
+    border: .5px solid green;
+
+    line-height: 60px;
+    text-align: center;
+    font-size: 30px;
+  }
+.container {
+    /* background-color: rgba(128, 128, 0,0.6); */
+    width: 100%;
+    max-width: 960px;
+    /* margin: auto; */
+    margin-top: 30px;
+    padding-top: 2px;
+}
+
+.train-schedule {
+    background-color:rgba(0, 128, 0, 0.6);
+    
+}
+
+.add-train {
+    background-color:rgba(0, 128, 0, 0.6);
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-right: 200px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+footer {
+    background-color: green;
+    text-align: center;
+    line-height: 50px;
+}

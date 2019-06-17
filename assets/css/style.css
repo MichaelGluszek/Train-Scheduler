@@ -3,6 +3,7 @@
   }
 
 body {
+    background-image: url("../images/rr.jpg");
     background-color: grey;
     font-family: sans-serif;
 }
@@ -13,11 +14,12 @@ body {
     background-size: cover;
 
     background-color: burlywood;
-    border: .5px solid green;
+    border: 2px solid grey;
 
-    line-height: 60px;
+    line-height: 80px;
     text-align: center;
-    font-size: 30px;
+    text-shadow: 2px 2px grey;
+    font-size: 50px;
   }
 .container {
     /* background-color: rgba(128, 128, 0,0.6); */
@@ -28,13 +30,20 @@ body {
     padding-top: 2px;
 }
 
+.panel-heading {
+    text-align: center;
+    margin-top: 10px;
+}
 .train-schedule {
-    background-color:rgba(0, 128, 0, 0.6);
-    
+    /* background-color:rgba(0, 128, 0, 0.6); */
+    background-color: burlywood;
+    border: 3px solid grey;
 }
 
 .add-train {
-    background-color:rgba(0, 128, 0, 0.6);
+    /* background-color:rgba(0, 128, 0, 0.6); */
+    background-color: burlywood;
+    border: 3px solid grey;
     font-size: 20px;
     margin-top: 50px;
     margin-bottom: 50px;

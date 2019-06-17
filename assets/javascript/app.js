@@ -1,18 +1,45 @@
 $(function(){
 
 let firebaseConfig = {
-    apiKey: "AIzaSyBi0-kaQibSOPKrIipQ5GTWaPIJgHKoDp0",
-    authDomain: "trainscheduler-31cb9.firebaseapp.com",
-    databaseURL: "https://trainscheduler-31cb9.firebaseio.com",
-    projectId: "trainscheduler-31cb9",
-    storageBucket: "trainscheduler-31cb9.appspot.com",
-    messagingSenderId: "101421284499",
-    appId: "1:101421284499:web:df9058a8e8d5fc53"
+    apiKey: "AIzaSyCfm-H-491QiCYteVst0Qnrh-I-AWN6N6k",
+    authDomain: "trainscheduler-2222e.firebaseapp.com",
+    databaseURL: "https://trainscheduler-2222e.firebaseio.com",
+    projectId: "trainscheduler-2222e",
+    storageBucket: "trainscheduler-2222e.appspot.com",
+    messagingSenderId: "928454805206",
+    appId: "1:928454805206:web:80a2018e4c09dca4"
 }
 
 
 firebase.initializeApp(firebaseConfig);
 
 
-let database = firebase.database();
-  };
+var trainData = firebase.database();
+
+$("addTrainBtn").on("click", function(){
+  let trainName = $("#trainName").val();
+  let destination = $("#trainDestination").val();
+  let firstTrain = moment($("#firstTrain").val(),"HH:mm").subtract(10, "years").format("X");
+  let frequency = $("#trainFrequency").val();
+
+  let newTrain = {
+    name: trainName,
+    destination: destination,
+    firstTrain: firstTrain,
+    frequency: frequency
+  }
+  trainData.ref().push(newTrain);
+
+  alert("train added")
+
+  $("#trainName").val("");
+  $("#trainDestination").val("");
+  $("firstTrain").val("");
+  $("trainFrequency").val("");
+
+  return false;
+})
+
+
+
+});

@@ -1,4 +1,4 @@
-$(function(){
+// $(function(){
 
 let firebaseConfig = {
     apiKey: "AIzaSyCfm-H-491QiCYteVst0Qnrh-I-AWN6N6k",
@@ -16,7 +16,8 @@ firebase.initializeApp(firebaseConfig);
 
 var trainData = firebase.database();
 
-$("addTrainBtn").on("click", function(){
+$(".form").on("submit", function(event){
+  event.preventDefault()
   let trainName = $("#trainName").val();
   let destination = $("#trainDestination").val();
   let firstTrain = moment($("#firstTrain").val(),"HH:mm").subtract(10, "years").format("X");
@@ -28,18 +29,34 @@ $("addTrainBtn").on("click", function(){
     firstTrain: firstTrain,
     frequency: frequency
   }
+
+  console.log(newTrain);
   trainData.ref().push(newTrain);
 
-  alert("train added")
-
+ 
+  
   $("#trainName").val("");
   $("#trainDestination").val("");
-  $("firstTrain").val("");
-  $("trainFrequency").val("");
+  $("#firstTrain").val("");
+  $("#trainFrequency").val("");
 
   return false;
+  
 })
 
+trainData.ref().on("child_added", function(snapshot){
+  console.log(snapshot.val());
+  var name = snapshot.val().name;
+  var destination = snapshot.val().destination;
+  var frequency = snapshot.val().frequency;
+  var firstTrain = snapshot.val().firstTrain;
 
+  var remainder = moment().diff(moment.unix(firstTrain),"minutes")%frequency;
+  var minutes = frequency - remainder;
+  var arrival = moment().add(minutes,"m").format("hh:mm A");
 
-});
+  $(".table > tBody").append("<tr><td>"+name+"</td> <td>"+destination+"</td><td>"+
+  frequency+"</td><td>"+arrival+"</td><td>"+minutes+"</td></tr>");
+})
+
+// });
